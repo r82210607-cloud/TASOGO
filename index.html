@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pencatatan Keuangan Digital UMKM TASOGO</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>💰 Pencatatan Keuangan Digital UMKM TASOGO</h1>
+      <p class="subtitle">Kelola keuangan UMKM Anda dengan mudah dan efisien</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+      <button class="nav-btn" data-tab="transactions">Transaksi</button>
+      <button class="nav-btn" data-tab="reports">Laporan</button>
+    </nav>
+
+    <!-- Dashboard Tab -->
+    <div id="dashboard" class="tab-content active">
+      <div class="summary-cards">
+        <div class="card income-card">
+          <div class="card-header">📊 Total Pemasukan</div>
+          <div class="card-value" id="totalIncome">Rp 0</div>
+        </div>
+        <div class="card expense-card">
+          <div class="card-header">📊 Total Pengeluaran</div>
+          <div class="card-value" id="totalExpense">Rp 0</div>
+        </div>
+        <div class="card balance-card">
+          <div class="card-header">💳 Saldo</div>
+          <div class="card-value" id="totalBalance">Rp 0</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="recent-transactions">
+          <h2>Transaksi Terbaru</h2>
+          <div id="recentTransactions" class="transaction-list">
+            <p class="empty-state">Belum ada transaksi</p>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <h2>Ringkasan Bulanan</h2>
+          <div id="monthlySummary" class="summary-table">
+            <p class="empty-state">Tidak ada data</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transactions Tab -->
+    <div id="transactions" class="tab-content">
+      <div class="form-section">
+        <h2>Tambah Transaksi Baru</h2>
+        <form id="transactionForm" class="transaction-form">
+          <div class="form-group">
+            <label>Tipe Transaksi</label>
+            <select id="transactionType" required>
+              <option value="income">Pemasukan</option>
+              <option value="expense">Pengeluaran</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Kategori</label>
+            <input type="text" id="categoryInput" placeholder="Contoh: Makanan, Transportasi" required>
+          </div>
+
+          <div class="form-group">
+            <label>Jumlah (Rp)</label>
+            <input type="number" id="amount" placeholder="0" min="0" required>
+          </div>
+
+          <div class="form-group">
+            <label>Tanggal</label>
+            <input type="date" id="transactionDate" required>
+          </div>
+
+          <div class="form-group">
+            <label>Keterangan (Opsional)</label>
+            <textarea id="description" placeholder="Catatan tambahan..." rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Simpan Transaksi</button>
+        </form>
+      </div>
+
+      <div class="transactions-section">
+        <h2>Daftar Transaksi</h2>
+        <div class="filter-bar">
+          <select id="filterType">
+            <option value="">Semua Transaksi</option>
+            <option value="income">Pemasukan</option>
+            <option value="expense">Pengeluaran</option>
+          </select>
+          <input type="month" id="filterMonth">
+        </div>
+        <div id="transactionsList" class="transaction-list">
+          <p class="empty-state">Belum ada transaksi</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reports Tab -->
+    <div id="reports" class="tab-content">
+      <h2>Laporan Keuangan</h2>
+      
+      <div class="report-filters">
+        <input type="month" id="reportMonth">
+        <button id="generateReport" class="btn btn-primary">Generate Laporan</button>
+        <button id="exportExcel" class="btn btn-secondary">Export ke Excel</button>
+        <button id="exportPDF" class="btn btn-secondary">Export ke PDF</button>
+      </div>
+
+      <div class="report-container">
+        <div class="report-section">
+          <h3>Ringkasan Bulanan</h3>
+          <div id="reportContent" class="report-content">
+            <p class="empty-state">Pilih bulan untuk melihat laporan</p>
+          </div>
+        </div>
+
+        <div class="report-section">
+          <h3>Breakdown Kategori</h3>
+          <div id="categoryBreakdown" class="category-breakdown">
+            <p class="empty-state">Tidak ada data</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories Tab -->
+    <div id="categories" class="tab-content" style="display:none;"></div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Pencatatan Keuangan Digital UMKM TASOGO. Kelola keuangan dengan bijak.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
